@@ -13,6 +13,8 @@ jobs:
             echo $GITHUB_SHA
             echo $GITHUB_REPOSITORY
             echo $GITHUB_WORKSPACE
+            echo $GITHUB_ACTOR
+            echo $GITHUB_TOKEN
       - name: change work directory
         working-directory: /home/runner
         run: pwd
