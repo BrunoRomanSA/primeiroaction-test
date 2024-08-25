@@ -1,6 +1,20 @@
 name: Manually Trigger
 on: 
   workflow_dispatch: 
+    inputs:
+      string:
+        description: A string inputt
+        type: string
+        required: true
+        default: "Default value"
+      option:
+        description: "Anoption input"
+        type: choice
+        default: "Option 3"
+        options:
+          - Option 1
+          - Option 2
+          - Option 3
 
 
 jobs:
@@ -8,3 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo $GITHUB_REF
+      - run: |
+          echo "string: ${{ inputs.string }}"
+          echo "Option: ${{ inputs.option }}"
