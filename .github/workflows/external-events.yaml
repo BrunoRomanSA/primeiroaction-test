@@ -1,0 +1,10 @@
+name: External Events
+
+on: 
+  repository_dispatch: 
+
+jobs:
+  echo-a-string:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo "Dispacher repo"
