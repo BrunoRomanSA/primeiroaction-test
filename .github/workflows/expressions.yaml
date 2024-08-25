@@ -1,5 +1,9 @@
 name: Expressions Context
-on: [push, issues]
+on: 
+  pull_request: 
+    types: [opened,assigned,reopened, synchronize]
+  issues: 
+    types: [opened, closed]
 run-name: "Expressions & COntext by @${{ github.actor }}, event: ${{ github.event_name }}"
 
 jobs:
