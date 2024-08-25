@@ -1,0 +1,21 @@
+name: Expressions Context
+on: [push]
+
+jobs:
+  using-espressions:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Expressions
+        id: Expressions
+        run: |
+          echo ${{ null }}
+          echo ${{ 1 > 2 }}
+          echo ${{ true || (false && true ) }}
+      - name: Context
+        id: Context
+        run: |
+          echo '${{ toJson(github) }}'
+          echo '${{ toJson(job) }}'
+          echo '${{ toJson(secrets) }}'
+          echo '${{ toJson(runner) }}'
+          echo '${{ toJson(steps) }}'
