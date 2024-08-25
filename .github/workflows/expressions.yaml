@@ -1,8 +1,14 @@
 name: Expressions Context
 on: [push, issues]
-run-name: "Expressions & COntext by @{{ github.actor }}, event: ${{ github.event_name }}"
+run-name: "Expressions & COntext by @${{ github.actor }}, event: ${{ github.event_name }}"
 
 jobs:
+  run-only-push-not-issues:
+    runs-on: ubuntu-latest
+    if: contains(fromJson('["push"]'), github.event_name)
+    steps:
+      - name: RUn only if push
+        run: echo "isso e um push"
   using-espressions:
     runs-on: ubuntu-latest
     steps:
