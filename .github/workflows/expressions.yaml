@@ -3,7 +3,7 @@ on: [push, issues]
 
 jobs:
   using-espressions:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - name: Expressions
