@@ -1,0 +1,13 @@
+name: Wirkflow run
+on: 
+  workflow_run: 
+    workflows: [Repository Events]
+    types: [completed]
+    branches: 
+      - main
+
+jobs:
+  echo-string:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "fui triggado porque o 'Repository Events" fopi finalizado
