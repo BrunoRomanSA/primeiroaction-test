@@ -14,9 +14,6 @@ jobs:
       - name: Runs if step2 failure
         if: steps.step-2.conclusion == 'failure'
         run: echo "step 2 falhou"
-      - name: Runs on Failure
-        if: failure()
-        run: echo "Runs only on Failure ${{steps.step-2.conclusion}}"
       - name: Runs on sucess
         if: success()
         run: echo "Runs on success"
