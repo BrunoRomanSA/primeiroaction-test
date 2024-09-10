@@ -27,3 +27,12 @@ jobs:
         run: |
           echo '${{env.WF_LEVEL}}'
           echo '${{env.JOB_LEVEL_ENV}}'
+
+
+  env-job-2:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Log Custom outro Step
+        run: |
+          echo '${{env.WF_LEVEL}}'
+          echo '${{env.JOB_LEVEL_ENV}}'
