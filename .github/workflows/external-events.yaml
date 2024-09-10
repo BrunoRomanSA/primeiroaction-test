@@ -2,9 +2,12 @@ name: External Events
 
 on: 
   repository_dispatch: 
+    types:
+      - build
 
 jobs:
   echo-a-string:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Dispacher repo"
+      - run: echo ${{ github.event.client_payload.env }}
