@@ -2,11 +2,28 @@ name: ENV Variables
 on: 
   push: 
 
+env:
+  WF_LEVEL: Disponivel em todos os leves
+
 jobs:
   env-vars-and-Context:
     runs-on: ubuntu-latest
+    env:
+      JOB_LEVEL_ENV: disponivel para todos os steps deste job
     steps:
       - name: Log ENV Variables
         run: echo $GITHUB_REF
       - name: log context
         run: echo '${{github.ref}}'
+      - name: Log Custom
+        env:
+          STEP_LEVEL: Disponivel somente neste step
+          WF_LEVEL: Override
+        run: |
+          echo '${{env.STEP_LEVEL}}'
+          echo '${{env.WF_LEVEL}}'
+          echo '${{env.JOB_LEVEL_ENV}}'
+      - name: Log Custom outro Step
+        run: |
+          echo '${{env.WF_LEVEL}}'
+          echo '${{env.JOB_LEVEL_ENV}}'
