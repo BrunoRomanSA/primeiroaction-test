@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step 1
+        id: step-1
         run: sleep 20
       - name: Step 2
         id: step-2
@@ -21,8 +22,11 @@ jobs:
           echo "${{steps.step-2.conclusion == 'failure'}}"
           echo "${{steps.step-2.conclusion}}"
       - name: Runs if step2 failure
-        if: true
+        if: always() && steps.step-2.conclusion == 'failure'
         run: echo "step 2 falhou"
+      - name: Runs if step1 failure
+        if: always() && steps.step-1.conclusion == 'failure'
+        run: echo "step 1 falhou"
       - name: Runs when canceled
         if: cancelled()
         run: echo "runs on cancelled"
