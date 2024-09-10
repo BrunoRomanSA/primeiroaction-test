@@ -1,5 +1,13 @@
 name: Expressions & Context
-on: [push, pull_request, issues, workflow_dispatch]
+
+on: 
+  push:
+    branches:
+      - "feature*"
+  pull_request:
+  issues:
+
+run-name: "Expressions & Context by @${{github.actor}}, event: ${{github.event_name}}"
 
 jobs:
   using-Expressions-and-Context:
@@ -10,7 +18,8 @@ jobs:
         run: |
           echo ${{1}}
           echo ${{'This is a string'}}
-          echo  ${{ null }}
+          echo  ${{ github.repository_id }}
+          echo ${{ github.repository.id }}
           echo $${{1>2}}
       - name: Dump Context
         run: |
