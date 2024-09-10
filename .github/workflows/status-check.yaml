@@ -21,7 +21,7 @@ jobs:
           echo "${{steps.step-2.conclusion == 'failure'}}"
           echo "${{steps.step-2.conclusion}}"
       - name: Runs if step2 failure
-        if: steps.step-2.conclusion == 'failure'
+        if: ${{steps.step-2.conclusion == 'failure'}}
         run: echo "step 2 falhou"
       - name: Runs when canceled
         if: cancelled()
