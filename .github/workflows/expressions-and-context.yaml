@@ -19,7 +19,7 @@ jobs:
           echo ${{1}}
           echo ${{'This is a string'}}
           echo  ${{ github.repository_id }}
-          echo ${{ github.repository.id }}
+          echo ${{ github.repository }}
           echo $${{1>2}}
       - name: Dump Context
         run: |
@@ -28,3 +28,6 @@ jobs:
           echo '${{ toJson(secrets)}}'
           echo '${{ toJson(steps)}}'
           echo '${{ toJson(runner)}}'
+      - name: 
+        if: ${{github.action == 'BrunoRoman'}}
+        run: echo "actor correto"
