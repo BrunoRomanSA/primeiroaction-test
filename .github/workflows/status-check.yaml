@@ -21,7 +21,7 @@ jobs:
         if: always()
         run: |
           echo "always"
-          echo "${{steps.step-2.conclusion}} == failure"
+          echo "${{steps.step-2.conclusion == 'failure'}}"
           echo "${{steps.step-2.conclusion}}"
       - name: Runs when canceled
         if: cancelled()
